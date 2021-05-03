@@ -18,7 +18,7 @@ layout = [
 
 question = default_question
 
-sg.popup( eval(question) )
+# DEBUG sg.popup( eval(question) )
 
 window = sg.Window('Reihe üben', layout, finalize=True)
 
@@ -36,9 +36,9 @@ while True:                             # The Event Loop
         # 2 - ggf. das Ergebnis prüfen
         # 3 - richtig/falsch anzeigen (z.B. nur bei falsch ein Popup, oder bei falsch Ergebnis rot machen)
         # 4 - eine neue Aufgabe aktualisieren
-        sg.popup( "Ergebnis SOLL: " + str(eval(question)) + " - Ergebnis IST " + str(values['_ergebnis_'] ) )
+        # DEBUG sg.popup( "Ergebnis SOLL: " + str(eval(question)) + " - Ergebnis IST " + str(values['_ergebnis_'] ) )
         if values['_ergebnis_'] != str(eval(question)):
-            window.Element('_ergebnis_').Update(background_color='#880000')
+            window.Element('_ergebnis_').Update(background_color='#880000', select=True)
         else:
             # TODO select entered value - maybe that does not work with SimpleUI -> fix that there?
             window.Element('_ergebnis_').Update(background_color='#008800', select=True)
